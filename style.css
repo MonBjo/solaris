@@ -66,6 +66,7 @@ body {
 #uranus { background-color: #C9D4F1; }
 #neptunus { background-color: #7A91A7; }
 
+/* gives the ring to Saturnus */
 #saturnus::after {
     position: absolute;
     content: "";

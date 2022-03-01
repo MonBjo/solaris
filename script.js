@@ -1,34 +1,31 @@
 const bodiesWrapperElem = document.querySelector('.bodiesWrapper');
-
 const baseUrl = 'https://fathomless-shelf-54969.herokuapp.com/';
-//let key = '';
+
 
 getKey();
-
 
 async function getKey(){
     const response = await fetch(`${baseUrl}keys`, {
         method: 'POST'
     });
     
-    console.log('getKey() - response: ', response);
-    
     let data = await response.json();
-    console.log('getKey() - Key: ', data.key);
     const key = data.key;
-    getBodies(key);
+    
+    getData(key);
 }
 
-async function getBodies(key) {
-    let response = await fetch(`${baseUrl}bodies`, {
+async function getData(key) {
+    const response = await fetch(`${baseUrl}bodies`, {
         method: 'GET',
         headers: {'x-zocom': key}
     })
     console.log("getPlanets() - response: ", response);
-
+    
     let data = await response.json();
     console.table(data.bodies);
     generateBodies(data.bodies);
+    return data;
 }
 
 function generateBodies(bodies) {
@@ -40,7 +37,7 @@ function generateBodies(bodies) {
         const starHidden = -(starSize/10)*9;
         
         bodyElem.id = body.latinName.toLowerCase();
-
+        
         bodyElem.classList.add('bodiesWrapper--body');
         bodiesWrapperElem.style.marginLeft = starHidden*-3 + "px";
         
