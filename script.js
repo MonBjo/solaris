@@ -1,31 +1,45 @@
+/* defining data */
+const overlayElem = document.querySelector('.overlay');
 const bodiesWrapperElem = document.querySelector('.bodiesWrapper');
 const baseUrl = 'https://fathomless-shelf-54969.herokuapp.com/';
 
-
 getKey();
 
+overlayElem.addEventListener('click', () => {
+    overlayElem.style.display = 'none';
+});
+
 async function getKey(){
-    const response = await fetch(`${baseUrl}keys`, {
+    const responseKey = await fetch(`${baseUrl}keys`, {
         method: 'POST'
     });
     
-    let data = await response.json();
-    const key = data.key;
+    let dataKey = await responseKey.json();
+    const key = dataKey.key;
     
-    getData(key);
+    getBodies(key);
 }
 
-async function getData(key) {
-    const response = await fetch(`${baseUrl}bodies`, {
+async function getBodies(key) {
+    const responseBodies = await fetch(`${baseUrl}bodies`, {
         method: 'GET',
         headers: {'x-zocom': key}
     })
-    console.log("getPlanets() - response: ", response);
+    console.log("getPlanets() - responseBodies: ", responseBodies);
     
-    let data = await response.json();
+    let data = await responseBodies.json();
     console.table(data.bodies);
     generateBodies(data.bodies);
-    return data;
+    generateEventlisteners(data.bodies);
+}
+
+function generateEventlisteners(bodies) {
+    const bodiesElem = document.querySelectorAll('.bodiesWrapper--body');
+    for(let body of bodiesElem) {
+        body.addEventListener('click', event => {
+            overlayElem.style.display = 'block';
+        });
+    }
 }
 
 function generateBodies(bodies) {
@@ -39,13 +53,15 @@ function generateBodies(bodies) {
         bodyElem.id = body.latinName.toLowerCase();
         
         bodyElem.classList.add('bodiesWrapper--body');
-        bodiesWrapperElem.style.marginLeft = starHidden*-3 + "px";
         
         if(body.type == "star") {
+            bodiesWrapperElem.style.marginLeft = starHidden*-0.1 + "px";
+
             bodyElem.classList.add('body--star');
             bodyElem.style.height = starSize + "px";
             bodyElem.style.width = starSize + "px";
             bodyElem.style.left = starHidden + "px";
+            
         } else if(body.type == "planet") {
             bodyElem.style.height = planetSize + "px";
             bodyElem.style.width = planetSize + "px";
@@ -54,5 +70,17 @@ function generateBodies(bodies) {
         }
         
         bodiesWrapperElem.appendChild(bodyElem);
+
+        //generateEventlisteners(bodyElem, body)
     }
 }
+/*
+function generateEventlisteners(bodyElem, bodyData) {
+    bodyElem.addEventListener('click', event => {
+        console.log("this ", this);
+        console.log("event ", event);
+        console.log("body ", bodyData);
+        console.log("bodyElem ", bodyElem);
+    });
+}
+*/

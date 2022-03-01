@@ -6,10 +6,8 @@ body {
     width: 100vw;
     height:100vh;
     margin: 0;
-    border: 1px solid black;
     background: rgb(25,11,34);
-    background: linear-gradient(90deg, rgba(25,11,34,1) 0%, rgba(12,22,77,1) 100%);
-    overflow: hidden;
+    overflow-y: hidden;
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -38,6 +36,9 @@ body {
 
 .bodiesWrapper {
     height: 100%;
+    min-width: 750px;
+    background: linear-gradient(90deg, rgba(25,11,34,1) 0%, rgba(12,22,77,1) 100%);
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -48,6 +49,13 @@ body {
 /* all bodies */
 .bodiesWrapper--body {
     border-radius: 100%;
+    transition: 0.5s;
+}
+.bodiesWrapper--body:hover {
+    box-shadow: 0 0 0 2px rgb(25,11,34),
+                0 0 0 5px rgba(255, 255, 255, 0.5),
+                0 0 0 9px rgba(255, 255, 255, 0.5),
+                0 0 0 12px rgba(255, 255, 255, 0.5);
 }
 
 /* star specific */
@@ -62,7 +70,11 @@ body {
 #tellus { background-color: #428ED4; }
 #mars { background-color: #EF5F5F; }
 #lovis { background-color: #E29468; }
-#saturnus { background-color: #C7AA72; position: relative;}
+#saturnus { 
+    background-color: #C7AA72; 
+    position: relative; 
+    margin: 20px;
+}
 #uranus { background-color: #C9D4F1; }
 #neptunus { background-color: #7A91A7; }
 
@@ -77,4 +89,17 @@ body {
     border-radius: 100%;
     background-color: rgba(255, 255, 255, 0.3);
     transform: rotate(60deg);
+}
+
+
+/*--- Overlay ---*/
+
+.overlay {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(25,11,34,);
+    background: linear-gradient(90deg, rgba(25,11,34,1) 0%, rgba(12,22,77,1) 100%);
+    position: absolute;
+    top: 0;
 }
