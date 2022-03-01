@@ -38,8 +38,8 @@ function generateBodies(bodies) {
         const planetSize = (body.circumference / 2000);
         const starSize = (body.circumference / 6000);
         const starHidden = -(starSize/10)*9;
-
-        bodyElem.innerHTML = body.name;
+        
+        bodyElem.id = body.latinName.toLowerCase();
 
         bodyElem.classList.add('bodiesWrapper--body');
         bodiesWrapperElem.style.marginLeft = starHidden*-3 + "px";
@@ -53,7 +53,7 @@ function generateBodies(bodies) {
             bodyElem.style.height = planetSize + "px";
             bodyElem.style.width = planetSize + "px";
         } else {
-            console.log();
+            console.log("What is going on?");
         }
         
         bodiesWrapperElem.appendChild(bodyElem);
