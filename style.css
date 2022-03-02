@@ -114,8 +114,24 @@ body {
     border-radius: 100%;
     width: 100px;
     height: 100px;
-    border:1px solid pink;
     position: absolute;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay--body * {
+    border-radius: 100%;
+    width: 110%;
+    height: 110%;
+    position: absolute;
+    background-color: inherit;
+    opacity: 0.5;
+        
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .overlay--textWrapper {

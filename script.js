@@ -1,5 +1,6 @@
 /* defining data */
 const overlayElem = document.querySelector('.overlay');
+const bodyOverlayElem = document.querySelector('.overlay--body');
 const bodiesWrapperElem = document.querySelector('.bodiesWrapper');
 const baseUrl = 'https://fathomless-shelf-54969.herokuapp.com/';
 
@@ -52,7 +53,6 @@ function displayData(bodyId, bodies) {
     const tempratureDayElem = document.querySelector('#tempratureDay');
     const tempratureNightElem = document.querySelector('#tempratureNight');
     const moonsElem = document.querySelector('#moons');
-    const bodyOverlayElem = document.querySelector('.overlay--body');
     
     for(let body of bodies) {
         if(bodyId == body.latinName.toLowerCase()){
@@ -74,7 +74,6 @@ function displayData(bodyId, bodies) {
             }
             
             setBodiesId(bodyOverlayElem, body);
-            displayBodyAside(bodyOverlayElem, body);
 
             break;
         }
@@ -104,6 +103,7 @@ function generateBodies(bodies) {
         
         if(body.type == "star") {
             displayBodyAside(bodyElem, body);
+            displayBodyAside(bodyOverlayElem, body);
         } else if(body.type == "planet") {
             bodyElem.style.height = planetSize + "px";
             bodyElem.style.width = planetSize + "px";
@@ -118,7 +118,7 @@ function generateBodies(bodies) {
 function displayBodyAside(bodyElem, body) {
     const starSize = (body.circumference / 6000);
     const starHidden = -(starSize/10)*9;
-    
+
     bodiesWrapperElem.style.marginLeft = starHidden*-0.1 + "px";
     bodyElem.style.height = starSize + "px";
     bodyElem.style.width = starSize + "px";
