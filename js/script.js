@@ -6,11 +6,12 @@ const baseUrl = 'https://fathomless-shelf-54969.herokuapp.com/';
 
 getKey();
 
+/* overlay */
 overlayElem.addEventListener('click', () => {
     overlayElem.style.display = 'none';
 });
 
-
+/* both */
 async function getKey() {
     const responseKey = await fetch(`${baseUrl}keys`, {
         method: 'POST'
@@ -22,6 +23,7 @@ async function getKey() {
     getBodies(key);
 }
 
+/* both */
 async function getBodies(key) {
     const responseBodies = await fetch(`${baseUrl}bodies`, {
         method: 'GET',
@@ -34,6 +36,7 @@ async function getBodies(key) {
     generateEventlisteners(data.bodies);
 }
 
+/* both */
 function generateEventlisteners(bodies) {
     const bodiesElem = document.querySelectorAll('.bodiesWrapper--body');
     for(let body of bodiesElem) {
@@ -44,6 +47,7 @@ function generateEventlisteners(bodies) {
     }
 }
 
+/* overlay */
 function displayData(bodyId, bodies) {
     /* Defining data */
     const titleElem = document.querySelector('.overlay--title');
@@ -66,31 +70,21 @@ function displayData(bodyId, bodies) {
             tempratureDayElem.innerHTML = body.temp.day;
             tempratureNightElem.innerHTML = body.temp.night;
 
+            
             if(body.moons == 0) {
                 moonsElem.innerHTML = "Inga månar";
-            } else if(body.moons == 1) {
-                moonsElem.innerHTML = body.moons[0];
-            } else{
-                moonsElem.innerHTML = convertArrayToString(body.moons);
+            } else {
+                moonsElem.innerHTML = body.moons.join(', ');
             }
-            
+
             setBodiesId(bodyOverlayElem, body);
 
             break;
         }
     }
-
 }
 
-function convertArrayToString(moons) {
-    let stringOfMoons = "";
-    for(let moon of moons) {
-        stringOfMoons += `${moon}, `;
-    }
-    stringOfMoons = stringOfMoons.slice(0, -2);
-    return stringOfMoons;
-}
-
+/* main */
 function generateBodies(bodies) {
     for(let body of bodies){
         /* Defining data */
@@ -105,8 +99,7 @@ function generateBodies(bodies) {
             displayBodyAside(bodyElem, body);
             displayBodyAside(bodyOverlayElem, body);
         } else if(body.type == "planet") {
-            bodyElem.style.height = planetSize + "px";
-            bodyElem.style.width = planetSize + "px";
+            styleBodies(bodyElem, planetSize);
         } else {
             console.log("What is going on?");
         }
@@ -114,21 +107,29 @@ function generateBodies(bodies) {
         bodiesWrapperElem.appendChild(bodyElem);
     }
 }
+/* main */
+function styleBodies(bodyElem, planetSize){
+    bodyElem.style.height = planetSize + "px";
+    bodyElem.style.width = planetSize + "px";
+}
 
+/* main */
 function displayBodyAside(bodyElem, body) {
     const starSize = (body.circumference / 6000);
     const starHidden = -(starSize/10)*9;
-
+    
     bodiesWrapperElem.style.marginLeft = starHidden*-0.1 + "px";
     bodyElem.style.height = starSize + "px";
     bodyElem.style.width = starSize + "px";
     bodyElem.style.left = starHidden + "px";
 }
 
+/* main */
 function setBodiesId(bodyElem, body) {
     bodyElem.id = body.latinName.toLowerCase();
 }
 
+/* main */
 function setBodiesClass(bodyElem, body){
     bodyElem.classList.add('bodiesWrapper--body');
     if(body.type == "star") {
