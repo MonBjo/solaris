@@ -1,17 +1,14 @@
-/* defining data */
-const overlayElem = document.querySelector('.overlay');
+/* 
+ This is more of a general module or the starter module. To have where I fetch the key and get the data from
+ the API in and one function that is used in the other two modules, planetarySystem.js and overlay.js
+*/
+
 const baseUrl = 'https://fathomless-shelf-54969.herokuapp.com/';
 
 import {generateBodies} from './planetarySystem.js';
 import {generateEventlisteners} from './overlay.js';
 
 getKey();
-
-/* overlay */
-overlayElem.addEventListener('click', () => {
-    overlayElem.style.display = 'none';
-});
-
 
 async function getKey() {
     const responseKey = await fetch(`${baseUrl}keys`, {
@@ -24,7 +21,6 @@ async function getKey() {
     getBodies(key);
 }
 
-
 async function getBodies(key) {
     const responseBodies = await fetch(`${baseUrl}bodies`, {
         method: 'GET',
@@ -36,6 +32,7 @@ async function getBodies(key) {
     generateBodies(data.bodies);
     generateEventlisteners(data.bodies);
 }
+
 
 export function setBodiesId(bodyElem, body) {
     bodyElem.id = body.latinName.toLowerCase();
