@@ -87,7 +87,7 @@ body {
     content: "";
     right: 50%;
     bottom: -25%;
-    width: 5px;
+    width: 3%; /*percent instead of px so it looks good on the overlay too*/
     height: 150%;
     border-radius: 100%;
     background-color: rgba(255, 255, 255, 0.3);
