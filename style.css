@@ -101,7 +101,8 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: rgb(25,11,34,);
-    background: linear-gradient(90deg, rgba(25,11,34,1) 0%, rgba(12,22,77,1) 100%);
+    background: url('/stars.svg'), 
+        linear-gradient(90deg, rgba(25,11,34,1) 0%, rgba(12,22,77,1) 100%);
     position: absolute;
     top: 0;
     
