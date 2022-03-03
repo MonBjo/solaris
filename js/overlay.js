@@ -1,5 +1,6 @@
 /*
- 
+  Many variable names are similare to the ones that has to do with the planetary system so 
+ I thought it would be clearer to have the overlay functions in their own module. 
 */
 
 import { setBodiesId } from "./script.js";
@@ -8,6 +9,10 @@ import { starSize } from "./planetarySystem.js";
 const overlayElem = document.querySelector('.overlay');
 const bodyOverlayElem = document.querySelector('.overlay--body');
 
+
+overlayElem.addEventListener('click', () => {
+    overlayElem.style.display = 'none';
+});
 
 export function generateEventlisteners(bodies) {
     const bodiesElem = document.querySelectorAll('.bodiesWrapper--body');
@@ -23,44 +28,80 @@ export function generateEventlisteners(bodies) {
 
 function adjustBodyOverlay(bodyToAdjust){
     if(bodyOverlayElem.id == bodyToAdjust) {
-        bodyOverlayElem.style.width = starSize*3 + "px";
+        bodyOverlayElem.style.position = "absolute";
     } else {
         bodyOverlayElem.style.width = starSize + "px";
     }
 }
 
 function displayData(bodyId, bodies) {
-    /* Defining data */
-    const titleElem = document.querySelector('.overlay--title');
-    const subitleElem = document.querySelector('.overlay--subtitle');
-    const descriptionElem = document.querySelector('.overlay--description');
-    const circumferenceElem = document.querySelector('#circumference');
-    const distanceElem = document.querySelector('#distance');
-    const tempratureDayElem = document.querySelector('#tempratureDay');
-    const tempratureNightElem = document.querySelector('#tempratureNight');
-    const moonsElem = document.querySelector('#moons');
-    
     for(let body of bodies) {
         if(bodyId == body.latinName.toLowerCase()){
             console.log(body);
-            titleElem.innerHTML = body.name.toUpperCase();
-            subitleElem.innerHTML = body.latinName.toUpperCase();
-            descriptionElem.innerHTML = body.desc;
-            circumferenceElem.innerHTML = body.circumference;
-            distanceElem.innerHTML = body.distance;
-            tempratureDayElem.innerHTML = body.temp.day;
-            tempratureNightElem.innerHTML = body.temp.night;
 
-            
-            if(body.moons == 0) {
-                moonsElem.innerHTML = "Inga månar";
-            } else {
-                moonsElem.innerHTML = body.moons.join(', ');
-            }
+            setTitle(body);
+            setSubtitle(body);
+            setDescription(body);
+
+            setCircumference(body);
+            setDistance(body);
+            setTempratureDay(body);
+            setTempratureNight(body);
+
+            setMoons(body);
 
             setBodiesId(bodyOverlayElem, body);
 
             break;
         }
+    }
+}
+
+function setTitle(body) {
+    const titleElem = document.querySelector('.overlay--title');
+    titleElem.innerHTML = body.name.toUpperCase();
+}
+
+function setSubtitle(body) {
+    const subitleElem = document.querySelector('.overlay--subtitle');
+    subitleElem.innerHTML = body.latinName.toUpperCase();
+}
+
+function setDescription(body) {
+    const descriptionElem = document.querySelector('.overlay--description');
+    descriptionElem.innerHTML = body.desc;
+}
+
+function setCircumference(body) {
+    const circumferenceElem = document.querySelector('#circumference');
+    circumferenceElem.innerHTML = body.circumference;
+}
+
+function setDistance(body){
+    const distanceElem = document.querySelector('#distance');
+    distanceElem.innerHTML = body.distance;
+}
+
+function setTempratureDay(body){
+    const tempratureDayElem = document.querySelector('#tempratureDay');
+    tempratureDayElem.innerHTML = body.temp.day;
+}
+
+function setTempratureNight(body) {
+    const tempratureNightElem = document.querySelector('#tempratureNight');
+    tempratureNightElem.innerHTML = body.temp.night;
+}
+
+
+/* * * * * * * * * * * * * * * * * * * * *  * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+ * https://github.com/ryanmcdermott/clean-code-javascript#dont-use-flags-as-function-parameters *
+\* * * * * * * * * * * * * * * * * * * * *  * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+function setMoons(body){
+    const moonsElem = document.querySelector('#moons');
+    if(body.moons == 0) {
+        moonsElem.innerHTML = "Inga månar";
+    } else {
+        moonsElem.innerHTML = body.moons.join(', ');
     }
 }
