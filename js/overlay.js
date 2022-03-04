@@ -70,6 +70,7 @@ function setSubtitle(body) {
     subitleElem.innerHTML = body.latinName.toUpperCase();
 }
 
+
 function setDescription(body) {
     const descriptionElem = document.querySelector('.overlay--description');
     descriptionElem.innerHTML = body.desc;
@@ -95,10 +96,6 @@ function setTempratureNight(body) {
     tempratureNightElem.innerHTML = `${body.temp.night}C`;
 }
 
-
-/* * * * * * * * * * * * * * * * * * * * *  * * * * * * * * * * * * * * * * * * * * * * * * * * *\
- * https://github.com/ryanmcdermott/clean-code-javascript#dont-use-flags-as-function-parameters *
-\* * * * * * * * * * * * * * * * * * * * *  * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 function setMoons(body){
     const moonsElem = document.querySelector('#moons');
