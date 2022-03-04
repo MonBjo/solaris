@@ -24,6 +24,24 @@ body {
     color: #FFD029;
 }
 
+/*--- SCROLLBAR ---*/
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1d6d636; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(121, 109, 133); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(81, 77, 85); 
+}
+
 
 /*--- PAGE LAYOUT ---*/
 
@@ -95,7 +113,7 @@ body {
 }
 
 
-/*--- Overlay ---*/
+/*--- OVERLAY ---*/
 
 .overlay {
     width: 100vw;
@@ -129,7 +147,7 @@ body {
     position: absolute;
     background-color: inherit;
     opacity: 0.5;
-        
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,7 +156,9 @@ body {
 .overlay--textWrapper {
     padding: 20px;
     width: 66%;
-
+    overflow-y: auto;
+    height: 100%;
+    
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
