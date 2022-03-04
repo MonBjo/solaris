@@ -1,12 +1,13 @@
 /*
- Many variable names are similare to the ones that has to do with the planetary system so 
+ Many variable names are similar to the ones that has to do with the planetary system so 
  I thought it would be clearer to have the overlay functions in their own module. 
+
  There are also a lot of teeny tiny functions with the overlay and I think it makes sense
- to have them in their own module since they're not used anywhere else.
+ to have them in their own module since they're not used anywhere else. It makes it 
+ easier to find the function you're looking for.
 */
 
 import { setBodiesId } from "./script.js";
-import { starSize } from "./planetarySystem.js";
 
 const overlayElem = document.querySelector('.overlay');
 const bodyOverlayElem = document.querySelector('.overlay--body');
@@ -16,30 +17,30 @@ overlayElem.addEventListener('click', () => {
     overlayElem.style.display = 'none';
 });
 
-export function generateEventlisteners(bodies) {
+export function generateEventlisteners(bodiesData) {
     const bodiesElem = document.querySelectorAll('.bodiesWrapper--body');
     for(let body of bodiesElem) {
-        body.addEventListener('click', event => {
+        body.addEventListener('click', () => {
             overlayElem.style.display = 'flex';
+            displayData(body.id, bodiesData);
 
-            displayData(body.id, bodies);
-            adjustBodyOverlay('saturnus');
+            const bodyToAdjust = "saturnus";
+            if(bodyOverlayElem.id == bodyToAdjust) {
+                adjustBodyOverlay();
+            }
         });
     }
 }
 
-function adjustBodyOverlay(bodyToAdjust){
-    if(bodyOverlayElem.id == bodyToAdjust) {
-        bodyOverlayElem.style.position = "absolute";
-    } else {
-        bodyOverlayElem.style.width = starSize + "px";
-    }
+function adjustBodyOverlay(){
+    /* it loses is styled position due to the psuedo-element. Check around line 96 in style.css */
+    bodyOverlayElem.style.position = "absolute";
 }
 
 function displayData(bodyId, bodies) {
     for(let body of bodies) {
         if(bodyId == body.latinName.toLowerCase()){
-            //console.log("You clicked on: ", body);
+            console.log("You clicked on: ", body);
 
             setTitle(body);
             setSubtitle(body);
@@ -76,12 +77,12 @@ function setDescription(body) {
 
 function setCircumference(body) {
     const circumferenceElem = document.querySelector('#circumference');
-    circumferenceElem.innerHTML = `${body.circumference} km`;
+    circumferenceElem.innerHTML = `${body.circumference.toLocaleString('sv-SV')} km`;
 }
 
 function setDistance(body){
     const distanceElem = document.querySelector('#distance');
-    distanceElem.innerHTML = `${body.distance} km`;
+    distanceElem.innerHTML = `${body.distance.toLocaleString('sv-SV')} km`;
 }
 
 function setTempratureDay(body){

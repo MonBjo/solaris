@@ -5,16 +5,14 @@
 
 const bodiesWrapperElem = document.querySelector('.bodiesWrapper');
 const bodyOverlayElem = document.querySelector('.overlay--body');
-export let starSize;
+let starSize;
 
 import { setBodiesId } from "./script.js";
 
 export function generateBodies(bodies) {
     for(let body of bodies){
-        /* Defining data */
         const bodyElem = document.createElement('aside');
         const planetSize = (body.circumference / 2000);
-        
         
         setBodiesId(bodyElem, body);
         setBodiesClass(bodyElem, body);
@@ -23,7 +21,7 @@ export function generateBodies(bodies) {
             styleBodyAside(bodyElem, body);
             styleBodyAside(bodyOverlayElem, body);
         } else if(body.type == "planet") {
-            styleBodies(bodyElem, planetSize);
+            styleBodySize(bodyElem, planetSize);
         } else {
             console.log("What is going on?");
         }
@@ -32,27 +30,29 @@ export function generateBodies(bodies) {
     }
 }
 
-function styleBodies(bodyElem, planetSize){
-    bodyElem.style.height = planetSize + "px";
-    bodyElem.style.width = planetSize + "px";
-}
-
 
 function styleBodyAside(bodyElem, body) {
-    starSize = (body.circumference / 6000);
-    const starHidden = -(starSize/10)*9;
+    starSize = (body.circumference / 5000);
+    //starSize = (body.circumference / 6000);
+    const visiblePercent = 0.9;
+    const starHidden = -starSize * visiblePercent;
     
-    adjustBodiesWrapper(starHidden);
-    bodyElem.style.height = starSize + "px";
-    bodyElem.style.width = starSize + "px";
     bodyElem.style.left = starHidden + "px";
+    adjustBodiesWrapper(starHidden);
+
+    styleBodySize(bodyElem, starSize);
 }
 
-function adjustBodiesWrapper(starHidden){
+function adjustBodiesWrapper(starHidden) {
     bodiesWrapperElem.style.marginLeft = starHidden*-0.1 + "px";
 }
 
-function setBodiesClass(bodyElem, body){
+function styleBodySize(bodyElem, size) {
+    bodyElem.style.height = size + "px";
+    bodyElem.style.width = size + "px";
+}
+
+function setBodiesClass(bodyElem, body) {
     bodyElem.classList.add('bodiesWrapper--body');
     if(body.type == "star") {
         bodyElem.classList.add('body--star');

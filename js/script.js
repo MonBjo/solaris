@@ -1,6 +1,6 @@
 /* 
- This is more of a general module or the starter module. To have where I fetch the key and get the data from
- the API in and one function that is used in the other two modules, planetarySystem.js and overlay.js
+ This is more of a general module or the starter module, so to speak. To have where I fetch the key and 
+ get the data from the API in and one function that is used in the other two modules, planetarySystem.js and overlay.js
 */
 
 const baseUrl = 'https://fathomless-shelf-54969.herokuapp.com/';
@@ -17,7 +17,6 @@ async function getKey() {
     
     let dataKey = await responseKey.json();
     let key = dataKey.key;
-    
     getBodies(key);
 }
 
