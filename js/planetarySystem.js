@@ -1,6 +1,7 @@
 /*
  Many variable names are similare to the ones that has to do with the overlay so 
- I thought it would be clearer to have the planetary system functions in their own module. 
+ I thought it would be clearer to have the planetary system functions in their own 
+ module so they don't get mixed together. 
 */
 
 const bodiesWrapperElem = document.querySelector('.bodiesWrapper');
