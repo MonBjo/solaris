@@ -74,22 +74,22 @@ function setDescription(body) {
 
 function setCircumference(body) {
     const circumferenceElem = document.querySelector('#circumference');
-    circumferenceElem.innerHTML = body.circumference;
+    circumferenceElem.innerHTML = `${body.circumference} km`;
 }
 
 function setDistance(body){
     const distanceElem = document.querySelector('#distance');
-    distanceElem.innerHTML = body.distance;
+    distanceElem.innerHTML = `${body.distance} km`;
 }
 
 function setTempratureDay(body){
     const tempratureDayElem = document.querySelector('#tempratureDay');
-    tempratureDayElem.innerHTML = body.temp.day;
+    tempratureDayElem.innerHTML = `${body.temp.day}C`;
 }
 
 function setTempratureNight(body) {
     const tempratureNightElem = document.querySelector('#tempratureNight');
-    tempratureNightElem.innerHTML = body.temp.night;
+    tempratureNightElem.innerHTML = `${body.temp.night}C`;
 }
 
 
