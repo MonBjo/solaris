@@ -1,6 +1,8 @@
 /*
-  Many variable names are similare to the ones that has to do with the planetary system so 
+ Many variable names are similare to the ones that has to do with the planetary system so 
  I thought it would be clearer to have the overlay functions in their own module. 
+ There are also a lot of teeny tiny functions with the overlay and I think it makes sense
+ to have them in their own module since they're not used anywhere else.
 */
 
 import { setBodiesId } from "./script.js";
@@ -37,7 +39,7 @@ function adjustBodyOverlay(bodyToAdjust){
 function displayData(bodyId, bodies) {
     for(let body of bodies) {
         if(bodyId == body.latinName.toLowerCase()){
-            console.log(body);
+            //console.log("You clicked on: ", body);
 
             setTitle(body);
             setSubtitle(body);

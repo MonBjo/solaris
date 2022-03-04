@@ -20,8 +20,8 @@ export function generateBodies(bodies) {
         setBodiesClass(bodyElem, body);
         
         if(body.type == "star") {
-            displayBodyAside(bodyElem, body);
-            displayBodyAside(bodyOverlayElem, body);
+            styleBodyAside(bodyElem, body);
+            styleBodyAside(bodyOverlayElem, body);
         } else if(body.type == "planet") {
             styleBodies(bodyElem, planetSize);
         } else {
@@ -38,16 +38,19 @@ function styleBodies(bodyElem, planetSize){
 }
 
 
-function displayBodyAside(bodyElem, body) {
+function styleBodyAside(bodyElem, body) {
     starSize = (body.circumference / 6000);
     const starHidden = -(starSize/10)*9;
     
-    bodiesWrapperElem.style.marginLeft = starHidden*-0.1 + "px";
+    adjustBodiesWrapper(starHidden);
     bodyElem.style.height = starSize + "px";
     bodyElem.style.width = starSize + "px";
     bodyElem.style.left = starHidden + "px";
 }
 
+function adjustBodiesWrapper(starHidden){
+    bodiesWrapperElem.style.marginLeft = starHidden*-0.1 + "px";
+}
 
 function setBodiesClass(bodyElem, body){
     bodyElem.classList.add('bodiesWrapper--body');

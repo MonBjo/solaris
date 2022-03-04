@@ -28,7 +28,7 @@ async function getBodies(key) {
     })
     
     let data = await responseBodies.json();
-    console.table(data.bodies);
+    console.table("All the bodies in the planetary system: ", data.bodies);
     generateBodies(data.bodies);
     generateEventlisteners(data.bodies);
 }
