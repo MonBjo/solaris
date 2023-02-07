@@ -1,0 +1,194 @@
+[
+    {
+        "id": 0,
+        "type": "star or planet",
+        "name": "",
+        "latinName": "",
+        "rotation": 0,
+        "circumference": 0,
+        "temp": { 
+            "day": 0,
+            "night": 0
+        },
+        "distance": 0,
+        "orbitalPeriod": 0,
+        "desc": "",
+        "moons": ["names", "of", "the", "moons"]
+    },
+    {
+        "id": 0,
+        "type": "star or planet",
+        "name": "",
+        "latinName": "",
+        "rotation": 0,
+        "circumference": 0,
+        "temp": { 
+            "day": 0,
+            "night": 0
+        },
+        "distance": 0,
+        "orbitalPeriod": 0,
+        "desc": "",
+        "moons": ["names", "of", "the", "moons"]
+    },
+    {
+        "id": 0,
+        "type": "star or planet",
+        "name": "",
+        "latinName": "",
+        "rotation": 0,
+        "circumference": 0,
+        "temp": { 
+            "day": 0,
+            "night": 0
+        },
+        "distance": 0,
+        "orbitalPeriod": 0,
+        "desc": "",
+        "moons": ["names", "of", "the", "moons"]
+    },
+    {
+        "id": 0,
+        "type": "star or planet",
+        "name": "",
+        "latinName": "",
+        "rotation": 0,
+        "circumference": 0,
+        "temp": { 
+            "day": 0,
+            "night": 0
+        },
+        "distance": 0,
+        "orbitalPeriod": 0,
+        "desc": "",
+        "moons": ["names", "of", "the", "moons"]
+    },
+    {
+        "id": 0,
+        "type": "star or planet",
+        "name": "",
+        "latinName": "",
+        "rotation": 0,
+        "circumference": 0,
+        "temp": { 
+            "day": 0,
+            "night": 0
+        },
+        "distance": 0,
+        "orbitalPeriod": 0,
+        "desc": "",
+        "moons": ["names", "of", "the", "moons"]
+    },
+    {
+        "id": 0,
+        "type": "star or planet",
+        "name": "",
+        "latinName": "",
+        "rotation": 0,
+        "circumference": 0,
+        "temp": { 
+            "day": 0,
+            "night": 0
+        },
+        "distance": 0,
+        "orbitalPeriod": 0,
+        "desc": "",
+        "moons": ["names", "of", "the", "moons"]
+    },
+    {
+        "id": 0,
+        "type": "star or planet",
+        "name": "",
+        "latinName": "",
+        "rotation": 0,
+        "circumference": 0,
+        "temp": { 
+            "day": 0,
+            "night": 0
+        },
+        "distance": 0,
+        "orbitalPeriod": 0,
+        "desc": "",
+        "moons": ["names", "of", "the", "moons"]
+    },
+    {
+        "id": 0,
+        "type": "star or planet",
+        "name": "",
+        "latinName": "",
+        "rotation": 0,
+        "circumference": 0,
+        "temp": { 
+            "day": 0,
+            "night": 0
+        },
+        "distance": 0,
+        "orbitalPeriod": 0,
+        "desc": "",
+        "moons": ["names", "of", "the", "moons"]
+    },
+    {
+        "id": 0,
+        "type": "star or planet",
+        "name": "",
+        "latinName": "",
+        "rotation": 0,
+        "circumference": 0,
+        "temp": { 
+            "day": 0,
+            "night": 0
+        },
+        "distance": 0,
+        "orbitalPeriod": 0,
+        "desc": "",
+        "moons": ["names", "of", "the", "moons"]
+    },
+    {
+        "id": 0,
+        "type": "star or planet",
+        "name": "",
+        "latinName": "",
+        "rotation": 0,
+        "circumference": 0,
+        "temp": { 
+            "day": 0,
+            "night": 0
+        },
+        "distance": 0,
+        "orbitalPeriod": 0,
+        "desc": "",
+        "moons": ["names", "of", "the", "moons"]
+    },
+    {
+        "id": 0,
+        "type": "star or planet",
+        "name": "",
+        "latinName": "",
+        "rotation": 0,
+        "circumference": 0,
+        "temp": { 
+            "day": 0,
+            "night": 0
+        },
+        "distance": 0,
+        "orbitalPeriod": 0,
+        "desc": "",
+        "moons": ["names", "of", "the", "moons"]
+    },
+    {
+        "id": 0,
+        "type": "star or planet",
+        "name": "",
+        "latinName": "",
+        "rotation": 0,
+        "circumference": 0,
+        "temp": { 
+            "day": 0,
+            "night": 0
+        },
+        "distance": 0,
+        "orbitalPeriod": 0,
+        "desc": "",
+        "moons": ["names", "of", "the", "moons"]
+    }
+]
