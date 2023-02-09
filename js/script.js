@@ -3,34 +3,43 @@
  get the data from the API in and one function that is used in the other two modules, planetarySystem.js and overlay.js
 */
 
-const baseUrl = 'https://fathomless-shelf-54969.herokuapp.com/';
+// const baseUrl = 'https://fathomless-shelf-54969.herokuapp.com/';
 
 import {generateBodies} from './planetarySystem.js';
 import {generateEventlisteners} from './overlay.js';
+import bodies from '../bodies.json';
 
-getKey();
-
-async function getKey() {
-    const responseKey = await fetch(`${baseUrl}keys`, {
-        method: 'POST'
-    });
-    
-    let dataKey = await responseKey.json();
-    let key = dataKey.key;
-    getBodies(key);
+console.log(bodies);
+getBodies();
+function getBodies() {
+    console.log("ohai", bodies);
+    generateBodies(bodies);
+    generateEventlisteners(bodies);
 }
 
-async function getBodies(key) {
-    const responseBodies = await fetch(`${baseUrl}bodies`, {
-        method: 'GET',
-        headers: {'x-zocom': key}
-    })
+// getKey();
+
+// async function getKey() {
+//     const responseKey = await fetch(`${baseUrl}keys`, {
+//         method: 'POST'
+//     });
     
-    let data = await responseBodies.json();
-    console.table("All the bodies in the planetary system: ", data.bodies);
-    generateBodies(data.bodies);
-    generateEventlisteners(data.bodies);
-}
+//     let dataKey = await responseKey.json();
+//     let key = dataKey.key;
+//     getBodies(key);
+// }
+
+// async function getBodies(key) {
+//     const responseBodies = await fetch(`${baseUrl}bodies`, {
+//         method: 'GET',
+//         headers: {'x-zocom': key}
+//     })
+    
+//     let data = await responseBodies.json();
+//     console.table("All the bodies in the planetary system: ", data.bodies);
+//     generateBodies(data.bodies);
+//     generateEventlisteners(data.bodies);
+// }
 
 
 export function setBodiesId(bodyElem, body) {
