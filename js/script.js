@@ -7,12 +7,12 @@
 
 import {generateBodies} from './planetarySystem.js';
 import {generateEventlisteners} from './overlay.js';
-import bodies from '../bodies.json';
+import data from '../bodies.json' assert { type: "json" };
 
-console.log(bodies);
-getBodies();
-function getBodies() {
-    console.log("ohai", bodies);
+console.log(data.bodies);
+getBodies(data.bodies);
+
+function getBodies(bodies) {
     generateBodies(bodies);
     generateEventlisteners(bodies);
 }
