@@ -17,6 +17,10 @@ function getBodies(bodies) {
     generateEventlisteners(bodies);
 }
 
+if(window.innerWidth < 830) {
+    console.log(window.innerWidth);
+    alert("Denna sidan fungerar bäst på större skärmar");
+}
 // getKey();
 
 // async function getKey() {
