@@ -7,10 +7,13 @@
 
 import {generateBodies} from './planetarySystem.js';
 import {generateEventlisteners} from './overlay.js';
-import data from '../bodies.json' assert { type: "json" };
 
-console.log(data.bodies);
-getBodies(data.bodies);
+fetch("bodies.json")
+    .then(response => response.json())
+    .then(data => { 
+        console.log(data.bodies);
+        getBodies(data.bodies);
+    });
 
 function getBodies(bodies) {
     generateBodies(bodies);
@@ -21,6 +24,7 @@ if(window.innerWidth < 830) {
     console.log(window.innerWidth);
     alert("Denna sidan fungerar bäst på större skärmar");
 }
+
 // getKey();
 
 // async function getKey() {
